@@ -15,7 +15,7 @@ def home():
 
 
 @app.route("/guess/<your_name>")
-def game(your_name):
+def guess(your_name):
 
     # get data on gender from API and place it in variable
     gender_url = f"https://api.genderize.io/?name={your_name}"
@@ -31,7 +31,15 @@ def game(your_name):
 
     the_name = your_name.title()
 
-    return render_template("about.html", name=the_name, gender=the_gender, age=the_age)
+    return render_template("guess.html", name=the_name, gender=the_gender, age=the_age)
+
+
+@app.route("/blog")
+def blog():
+    blog_url = "https://api.npoint.io/afe3235f562051ec8034"
+    blog_response = requests.get(blog_url)
+    blog_posts = blog_response.json()
+    return render_template("blog.html", posts=blog_posts)
 
 
 if __name__ == "__main__":
