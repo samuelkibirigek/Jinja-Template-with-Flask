@@ -1,11 +1,16 @@
 from flask import Flask, render_template
+import random
+from datetime import datetime
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    random_number = random.randint(1, 10)
+    current_year = datetime.now().year
+    my_name = "KIBIRIGE KALULE SAMUEL"
+    return render_template("index.html", num=random_number, year=current_year, name=my_name)
 
 
 if __name__ == "__main__":
