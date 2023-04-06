@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def home():
+def home_page():
     random_number = random.randint(1, 10)
     current_year = datetime.now().year
     my_name = "Kibirige Kalule Samuel"
@@ -15,7 +15,7 @@ def home():
 
 
 @app.route("/guess/<your_name>")
-def guess(your_name):
+def guess_page(your_name):
 
     # get data on gender from API and place it in variable
     gender_url = f"https://api.genderize.io/?name={your_name}"
@@ -35,7 +35,7 @@ def guess(your_name):
 
 
 @app.route("/blog")
-def blog():
+def blog_page():
     blog_url = "https://api.npoint.io/afe3235f562051ec8034"
     blog_response = requests.get(blog_url)
     blog_posts = blog_response.json()
